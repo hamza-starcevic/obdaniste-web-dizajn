@@ -13,7 +13,8 @@
   }
   
   .post-list li {
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;

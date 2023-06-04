@@ -11,3 +11,67 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+textarea#exampleFormControlTextarea1 {
+  margin-bottom: 10px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  h3.fs-5.mb-0 {
+    padding-top: 20px;
+}
+.col-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+}
+.col-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+}
+a.btn.btn-outline-primary.px-4.py-2.rounded-pill.ms-2 {
+  display: flex;
+  flex-direction: column;
+}
+a.btn.btn-primary.px-4.py-2.rounded-pill {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+h3.fs-5.mb-0 {
+  padding-top: 20px;
+}
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.User {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile-img.pt-5.w-100.ms-5 {
+  margin-left: 0!important;
+}
+}
+
+h6 {
+  margin-bottom: 0px!important;
+}
+button.btn.btn-primary {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

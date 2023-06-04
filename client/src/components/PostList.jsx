@@ -20,14 +20,14 @@ const PostList = () => {
 
   return (
     <div className="post-list">
-      <h2>Obavjesti</h2>
+      <h1>Obavjesti</h1>
       {posts.length === 0 ? (
-        <p>No posts found.</p>
+        <h2>No posts found.</h2>
       ) : (
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
-              <h3>{post.naslov}</h3>
+              <h2>{post.naslov}</h2>
               <p>{post.sadrzaj}</p>
               <p>{post.datumObjave}</p>
             </li>

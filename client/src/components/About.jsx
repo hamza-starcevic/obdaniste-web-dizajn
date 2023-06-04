@@ -20,8 +20,8 @@ return (
                quaerat praesentium mollitia eos nihil unde perspiciatis magni sed laudantium aliquam tenetur facilis. 
                Sint harum magnam ipsa distinctio ut cum nulla delectus cumque temporibus Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut voluptatibus eius veniam, aut cupiditate magnam nesciunt autem
                ,similique eos repellendus perspiciatis delectus minus provident modi!</p>
-               <button className="btn btn-primary px-4 py-2 rounded-pill">Registrujte se odmah</button>
-               <button className="btn btn-outline-primary px-4 py-2 rounded-pill ms-2">Kontaktirajte nas</button>
+               <a className="btn btn-primary px-4 py-2 rounded-pill" href='/register'>Registrujte se odmah</a>
+               <a className="btn btn-outline-primary px-4 py-2 rounded-pill ms-2" href='kontakt'>Kontaktirajte nas</a>
 
                </div>
                </div>

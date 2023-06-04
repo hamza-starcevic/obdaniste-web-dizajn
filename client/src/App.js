@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
