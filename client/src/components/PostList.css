@@ -1,0 +1,35 @@
+.post-list {
+    padding: 20px;
+  }
+  
+  .post-list h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .post-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .post-list li {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .post-list li h3 {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+  
+  .post-list li p {
+    margin: 0;
+  }
+  
+  .post-list li p.date {
+    color: #999;
+    font-style: italic;
+  }
+  
