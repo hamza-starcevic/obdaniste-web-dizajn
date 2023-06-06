@@ -30,6 +30,22 @@ db.run(`CREATE TABLE IF NOT EXISTS Posts (
   datumObjave TEXT
 )`);
 
+db.run(`CREATE TABLE IF NOT EXISTS Comments (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  content TEXT,
+  userId INTEGER,
+  postId INTEGER,
+  FOREIGN KEY (postId) REFERENCES Posts(id)
+)`);
+
+// Create a table PostComments (intermediary table)
+db.run(`CREATE TABLE IF NOT EXISTS PostComments (
+  postId INTEGER,
+  commentId INTEGER,
+  FOREIGN KEY (postId) REFERENCES Posts(id),
+  FOREIGN KEY (commentId) REFERENCES Comments(id)
+)`);
+
 function seedDatabase() {
   const users = [
     {

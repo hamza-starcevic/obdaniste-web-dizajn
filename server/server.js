@@ -212,5 +212,45 @@ app.get("/posts", (req, res) => {
     }
   });
 });
+
+app.post("/comment", (req, res) => {
+  try {
+    const db = connectToDatabase();
+    const comment = req.body;
+    console.log(comment);
+    const sql = `INSERT INTO Comments (content, postId, userId)
+                  VALUES (?, ?, ?)`;
+    const values = [comment.content, comment.postId, comment.userId];
+
+    db.run(sql, values, (err) => {
+      if (err) {
+        res
+
+          .status(500)
+          .json({ message: "Error inserting new comment", error: err });
+      } else {
+        res.status(200).json({ message: "New comment inserted" });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .json({ message: "Error inserting new comment", error: err });
+  }
+});
+
+app.get("/comments/:postId", (req, res) => {
+  const db = connectToDatabase();
+  const postId = req.params.postId;
+  const sql = `SELECT * FROM Comments WHERE postId = ${postId}`;
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      res.status(500).json({ message: "Error getting comments", error: err });
+    } else {
+      res.status(200).json({ comments: rows });
+    }
+  });
+});
 //Start server
 app.listen(port, () => console.log(`Server radi na: ${port}`));
