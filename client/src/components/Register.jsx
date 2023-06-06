@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-const Register = ({ history }) => {
+const Register = () => {
   const [ime, setIme] = useState("");
   const [prezime, setPrezime] = useState("");
   const [imeRoditelja, setImeRoditelja] = useState("");
@@ -13,6 +13,7 @@ const Register = ({ history }) => {
   const [gradStanovanja, setGradStanovanja] = useState("");
   const [samohraniILIrazvedeni, setSamohraniILIrazvedeni] = useState("");
   const [bitneNapomene, setBitneNapomene] = useState("");
+  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
 
@@ -28,30 +29,47 @@ const Register = ({ history }) => {
       !brojTelefona ||
       !adresaStanovanja ||
       !gradStanovanja ||
-      !samohraniILIrazvedeni ||
-      !bitneNapomene
+      !samohraniILIrazvedeni
     ) {
       // Handle form validation error
       alert("Please fill in all the fields.");
       return;
     }
-
-    const { data } = await Axios.post("http://localhost:8001/register", {
-      ime: ime,
-      prezime: prezime,
-      imeRoditelja: imeRoditelja,
-      datumRodjenjaDjeteta: datumRodjenjaDjeteta,
-      email: email,
-      password: password,
-      brojTelefona: brojTelefona,
-      adresaStanovanja: adresaStanovanja,
-      gradStanovanja: gradStanovanja,
-      bitneNapomene: bitneNapomene,
-    });
-    console.log(data);
-    //navigate("/loggedin");
+    try {
+      await Axios.post("http://localhost:8001/register", {
+        ime: ime,
+        prezime: prezime,
+        imeRoditelja: imeRoditelja,
+        datumRodjenjaDjeteta: datumRodjenjaDjeteta,
+        email: email,
+        password: password,
+        brojTelefona: brojTelefona,
+        adresaStanovanja: adresaStanovanja,
+        gradStanovanja: gradStanovanja,
+        bitneNapomene: bitneNapomene,
+      });
+      localStorage.clear();
+      navigate("/login");
+    } catch (error) {
+      setError(error.response.data.error);
+    }
   };
-
+  if (error) {
+    return (
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="alert alert-danger text-center" role="alert">
+              <h4 className="alert-heading">Error</h4>
+              <p>Oops! {error}</p>
+              <hr />
+              <p className="mb-0">Please refresh the page.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <form style={{ padding: "4%", backgroundColor: "#cce1ff", color: "black" }}>
       <div className="form-group">

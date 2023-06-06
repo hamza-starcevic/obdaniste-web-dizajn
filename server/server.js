@@ -3,9 +3,11 @@ import cors from "cors";
 import sqlite3 from "sqlite3";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import morgan from "morgan";
 
 const app = express();
 app.use(cors());
+app.use(morgan("dev"));
 app.use(express.json());
 
 const port = process.env.PORT || 8001;
@@ -42,7 +44,9 @@ app.post("/register", async (req, res) => {
     // Check if the username is already taken
     const existingUser = await getUserByEmail(user.email);
     if (existingUser) {
-      return res.status(400).json({ error: "Username already exists" });
+      return res
+        .status(400)
+        .json({ error: "That email address is already in use" });
     }
 
     // Hash the password using bcrypt
